@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Web Output #1</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 8px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 90px;
+        }
+
+        button {
+            margin-top: 5px;
+        }
+
+        fieldset {
+            margin-top: 15px;
+            min-height: 20px;
+        }
+
+        #numbers {
+            word-spacing: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Javascript Web Output #1</h2>
+
+    <label>Insert any Positive Numbers:</label>
+    <input type="number" id="numberInput" min="1">
+
+    <br>
+
+    <button onclick="insertNumber()">Insert</button>
+    <button onclick="clearEntry()">Clear Entry</button>
+
+    <fieldset>
+        <legend>Inserted Numbers</legend>
+        <p id="numbers"></p>
+    </fieldset>
+
+    <script>
+
+        function insertNumber() {
+
+            let input = document.getElementById("numberInput");
+            let number = Number(input.value);
+
+            if (input.value === "" || number <= 0) {
+                alert("Please enter a positive number!");
+                return;
+            }
+
+            let output = document.getElementById("numbers");
+
+            let span = document.createElement("span");
+            span.textContent = number;
+
+            output.appendChild(span);
+            output.appendChild(document.createTextNode(" "));
+
+            input.value = "";
+            input.focus();
+        }
+
+        function clearEntry() {
+            document.getElementById("numberInput").value = "";
+            document.getElementById("numberInput").focus();
+        }
+
+    </script>
+
+</body>
+</html>
